@@ -22,15 +22,33 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         itemList = new ArrayList<>();
-        itemList.add(new Item(1, "Medical Tester 1", 3000, 2, 6000));
-        itemList.add(new Item(1, "Medical Tester 1", 3000, 2, 6000));
-        itemList.add(new Item(1, "Medical Tester 1", 3000, 2, 6000));
-        itemList.add(new Item(1, "Medical Tester 1", 3000, 2, 6000));
-        itemList.add(new Item(1, "Medical Tester 1", 3000, 2, 6000));
-        itemList.add(new Item(1, "Medical Tester 1", 3000, 2, 6000));
+        itemList.add(new Item(1, "Test Product 1", 3000, 2, 6000));
+        itemList.add(new Item(1, "Test Product 1", 3000, 2, 6000));
+        itemList.add(new Item(1, "Test Product 1", 3000, 2, 6000));
+        itemList.add(new Item(1, "Test Product 1", 3000, 2, 6000));
+        itemList.add(new Item(1, "Test Product 1", 3000, 2, 6000));
+        itemList.add(new Item(1, "Test Product 1", 3000, 2, 6000));
 
         Invoice invoice = new Invoice();
         invoice.setItems(itemList);
+        invoice.setLogo("https://www.onhandpos.com/assets/imgs/logo.png");
+        invoice.setCompanyName("On Hand POS");
+        invoice.setBranchName("အမွတ္ ၃၉ (ဘီ)၊ စပါယ္လမ္း");
+        invoice.setAddress("Company Address: No.39 B, Sapal Street, Mingal Taungnyunt");
+        invoice.setPhone("+959 777 555 336, 09767 947 154");
+        invoice.setDate("10/09/2019 01:23 PM");
+        invoice.setCashier("Cashier: Saw K");
+        invoice.setCurrency("Currency: MMK");
+        invoice.setInvoiceNo("INV. 1000001");
+        invoice.setCustomerName("CUST: Saw Maine K");
+        invoice.setCustomerPhone("Ph: 09777335336");
+        invoice.setSubtotal("20,000");
+        invoice.setTaxAmount("20,000");
+        invoice.setDiscount("1,000");
+        invoice.setGrandTotal("3,000");
+        invoice.setChangeAmount("19,000");
+        invoice.setNote("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s");
+        invoice.setUdf1("Lorem Ipsum is simply dummy text of the printing and typesetting industry");
 
         Bundle bundle = new Bundle();
         bundle.putString("ipAddress","192.168.1.87");

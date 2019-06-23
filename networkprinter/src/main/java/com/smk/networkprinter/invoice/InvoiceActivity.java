@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.smk.networkprinter.PrinterManager;
@@ -57,46 +58,130 @@ public class InvoiceActivity extends Activity {
         printing.setMessage("Printing...");
         printing.show();
         if(invoice != null) {
-            imgLogo = (ImageView) findViewById(R.id.img_logo);
-            Picasso.get()
-                    .load("https://www.onhandpos.com/assets/imgs/logo.png")
-                    .resize(300, 150)
-                    .centerInside()
-                    .into(imgLogo, new Callback() {
-                        @Override
-                        public void onSuccess() {
-                            new Thread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    try {
-                                        Thread.sleep(300);
-                                    } catch (InterruptedException e) {
-                                        e.printStackTrace();
-                                    } finally {
-                                        Bitmap bitmap = loadBitmapFromView(findViewById(R.id.invoice));
-                                        printerService.printImage(resizeBitmap(bitmap, paperWidth));
-                                        printerService.lineBreak();
-                                        printerService.cutFull();
-                                        printing.dismiss();
-                                        finish();
+            if(invoice.getCompanyName() != null && invoice.getCompanyName().length() > 0) {
+                ((TextView) findViewById(R.id.txt_company_name)).setText(invoice.getCompanyName());
+            }
+            if(invoice.getBranchName() != null && invoice.getBranchName().length() > 0) {
+                ((TextView) findViewById(R.id.txt_company_branch)).setText(invoice.getBranchName());
+            }
+            if(invoice.getAddress() != null && invoice.getAddress().length() > 0) {
+                ((TextView) findViewById(R.id.txt_address)).setText(invoice.getAddress());
+            }
+            if(invoice.getPhone() != null && invoice.getPhone().length() > 0) {
+                ((TextView) findViewById(R.id.txt_phone)).setText(invoice.getPhone());
+            }
+            if(invoice.getDate() != null && invoice.getDate().length() > 0) {
+                ((TextView) findViewById(R.id.txt_date)).setText(invoice.getDate());
+            }
+            if(invoice.getCashier() != null && invoice.getCashier().length() > 0) {
+                ((TextView) findViewById(R.id.txt_cashier)).setText(invoice.getCashier());
+            }
+            if(invoice.getCurrency() != null && invoice.getCurrency().length() > 0) {
+                ((TextView) findViewById(R.id.txt_currency)).setText(invoice.getCurrency());
+            }
+            if(invoice.getInvoiceNo() != null && invoice.getInvoiceNo().length() > 0) {
+                ((TextView) findViewById(R.id.txt_invoice_no)).setText(invoice.getInvoiceNo());
+            }
+            if(invoice.getCustomerName() != null && invoice.getCustomerName().length() > 0) {
+                ((TextView) findViewById(R.id.txt_customer_name)).setText(invoice.getCustomerName());
+            }
+            if(invoice.getCustomerPhone() != null && invoice.getCustomerPhone().length() > 0) {
+                ((TextView) findViewById(R.id.txt_customer_phone)).setText(invoice.getCustomerPhone());
+            }
+            if(invoice.getItems().size() > 0) {
+                lstView = (ListView) findViewById(R.id.lst_item);
+                itemList = new ArrayList<>();
+                itemList.addAll(this.invoice.getItems());
+
+                mAdapter = new ListItemAdapter(this, itemList);
+                lstView.setAdapter(mAdapter);
+                mAdapter.notifyDataSetChanged();
+                setListViewHeightBasedOnItems(lstView);
+            }
+            if(invoice.getSubtotal() != null && invoice.getSubtotal().length() > 0) {
+                ((TextView) findViewById(R.id.txt_subtotal)).setText(invoice.getSubtotal());
+            }
+            if(invoice.getTaxAmount() != null && invoice.getTaxAmount().length() > 0) {
+                ((TextView) findViewById(R.id.txt_tax_amount)).setText(invoice.getTaxAmount());
+            }
+            if(invoice.getDiscount() != null && invoice.getDiscount().length() > 0) {
+                ((TextView) findViewById(R.id.txt_tax_amount)).setText(invoice.getDiscount());
+            }
+            if(invoice.getGrandTotal() != null && invoice.getGrandTotal().length() > 0) {
+                ((TextView) findViewById(R.id.txt_grand_total)).setText(invoice.getGrandTotal());
+            }
+            if(invoice.getChangeAmount() != null && invoice.getChangeAmount().length() > 0) {
+                ((TextView) findViewById(R.id.txt_change)).setText(invoice.getChangeAmount());
+            }
+            if(invoice.getNote() != null && invoice.getNote().length() > 0) {
+                ((TextView) findViewById(R.id.txt_note)).setText(invoice.getNote());
+            }
+            if(invoice.getUdf1() != null && invoice.getUdf1().length() > 0) {
+                ((TextView) findViewById(R.id.txt_udf1)).setText(invoice.getUdf1());
+                ((TextView) findViewById(R.id.txt_udf1)).setVisibility(View.VISIBLE);
+            }
+            if(invoice.getUdf2() != null && invoice.getUdf2().length() > 0) {
+                ((TextView) findViewById(R.id.txt_udf2)).setText(invoice.getUdf2());
+                ((TextView) findViewById(R.id.txt_udf2)).setVisibility(View.VISIBLE);
+            }
+            if(invoice.getUdf3() != null && invoice.getUdf3().length() > 0) {
+                ((TextView) findViewById(R.id.txt_udf3)).setText(invoice.getUdf3());
+                ((TextView) findViewById(R.id.txt_udf3)).setVisibility(View.VISIBLE);
+            }
+            
+            if(invoice.getLogo() != null && invoice.getLogo().length() > 0 && invoice.getLogo().contains("http")) {
+                imgLogo = (ImageView) findViewById(R.id.img_logo);
+                Picasso.get()
+                        .load(invoice.getLogo())
+                        .resize(300, 150)
+                        .centerInside()
+                        .into(imgLogo, new Callback() {
+                            @Override
+                            public void onSuccess() {
+                                new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        try {
+                                            Thread.sleep(300);
+                                        } catch (InterruptedException e) {
+                                            e.printStackTrace();
+                                        } finally {
+                                            Bitmap bitmap = loadBitmapFromView(findViewById(R.id.invoice));
+                                            printerService.printImage(resizeBitmap(bitmap, paperWidth));
+                                            printerService.lineBreak();
+                                            printerService.cutFull();
+                                            printing.dismiss();
+                                            finish();
+                                        }
                                     }
-                                }
-                            }).start();
+                                }).start();
+                            }
+
+                            @Override
+                            public void onError(Exception e) {
+
+                            }
+                        });
+            } else {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(300);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        } finally {
+                            Bitmap bitmap = loadBitmapFromView(findViewById(R.id.invoice));
+                            printerService.printImage(resizeBitmap(bitmap, paperWidth));
+                            printerService.lineBreak();
+                            printerService.cutFull();
+                            printing.dismiss();
+                            finish();
                         }
+                    }
+                }).start();
+            }
 
-                        @Override
-                        public void onError(Exception e) {
-
-                        }
-                    });
-            lstView = (ListView) findViewById(R.id.lst_item);
-            itemList = new ArrayList<>();
-            itemList.addAll(this.invoice.getItems());
-
-            mAdapter = new ListItemAdapter(this, itemList);
-            lstView.setAdapter(mAdapter);
-            mAdapter.notifyDataSetChanged();
-            setListViewHeightBasedOnItems(lstView);
 
         }
 

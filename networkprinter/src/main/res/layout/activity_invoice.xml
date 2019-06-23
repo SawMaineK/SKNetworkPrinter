@@ -33,6 +33,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
+                    android:id="@+id/txt_company_name"
                     android:textAppearance="@android:style/TextAppearance.Medium"
                     android:layout_width="wrap_content"
                     android:layout_gravity="center"
@@ -40,6 +41,7 @@
                     android:layout_height="wrap_content"
                     android:text="On Hand POS" />
                 <TextView
+                    android:id="@+id/txt_company_branch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -47,6 +49,7 @@
                     android:textColor="#000"
                     android:text="အမွတ္ ၃၉ (ဘီ)၊ စပါယ္လမ္း" />
                 <TextView
+                    android:id="@+id/txt_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -55,7 +58,7 @@
                     android:text="Company Address: No.39 B, Sapal Street, Mingal Taungnyunt" />
 
                 <TextView
-                    
+                    android:id="@+id/txt_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000"
@@ -77,16 +80,19 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <TextView
+                            android:id="@+id/txt_date"
                             android:textColor="#000"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="10/09/2019 01:23 PM" />
                         <TextView
+                            android:id="@+id/txt_cashier"
                             android:textColor="#000"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Cashier: Saw K" />
                         <TextView
+                            android:id="@+id/txt_currency"
                             android:textColor="#000"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -99,16 +105,19 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <TextView
+                            android:id="@+id/txt_invoice_no"
                             android:textColor="#000"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="INV. 1000001" />
                         <TextView
+                            android:id="@+id/txt_customer_name"
                             android:textColor="#000"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="CUST: Saw Maine K" />
                         <TextView
+                            android:id="@+id/txt_customer_phone"
                             android:textColor="#000"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -222,16 +231,19 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <TextView
+                            android:id="@+id/txt_subtotal"
                             android:textColor="#000"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="20,000" />
                         <TextView
+                            android:id="@+id/txt_tax_amount"
                             android:textColor="#000"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="20,000" />
                         <TextView
+                            android:id="@+id/txt_discount"
                             android:textColor="#000"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -242,11 +254,13 @@
                             android:layout_height="wrap_content"
                             android:text="3,000" />
                         <TextView
+                            android:id="@+id/txt_grand_total"
                             android:textColor="#000"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="19,000" />
                         <TextView
+                            android:id="@+id/txt_change"
                             android:textColor="#000"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

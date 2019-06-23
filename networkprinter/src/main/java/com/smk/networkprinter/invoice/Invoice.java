@@ -6,6 +6,7 @@ import java.util.List;
 public class Invoice {
     String logo;
     String companyName;
+    String branchName;
     String shopName;
     String address;
     String phone;
@@ -22,6 +23,9 @@ public class Invoice {
     String grandTotal;
     String changeAmount;
     String note;
+    String udf1;
+    String udf2;
+    String udf3;
 
     public String getLogo() {
         return logo;
@@ -37,6 +41,14 @@ public class Invoice {
 
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
+    }
+
+    public String getBranchName() {
+        return branchName;
+    }
+
+    public void setBranchName(String branchName) {
+        this.branchName = branchName;
     }
 
     public String getShopName() {
@@ -165,5 +177,29 @@ public class Invoice {
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public String getUdf1() {
+        return udf1;
+    }
+
+    public void setUdf1(String udf1) {
+        this.udf1 = udf1;
+    }
+
+    public String getUdf2() {
+        return udf2;
+    }
+
+    public void setUdf2(String udf2) {
+        this.udf2 = udf2;
+    }
+
+    public String getUdf3() {
+        return udf3;
+    }
+
+    public void setUdf3(String udf3) {
+        this.udf3 = udf3;
     }
 }
