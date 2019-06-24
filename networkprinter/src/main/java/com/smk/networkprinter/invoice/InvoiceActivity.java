@@ -105,16 +105,20 @@ public class InvoiceActivity extends Activity {
                 ((TextView) findViewById(R.id.txt_tax_amount)).setText(invoice.getTaxAmount());
             }
             if(invoice.getDiscount() != null && invoice.getDiscount().length() > 0) {
-                ((TextView) findViewById(R.id.txt_tax_amount)).setText(invoice.getDiscount());
+                ((TextView) findViewById(R.id.txt_discount)).setText(invoice.getDiscount());
             }
             if(invoice.getGrandTotal() != null && invoice.getGrandTotal().length() > 0) {
                 ((TextView) findViewById(R.id.txt_grand_total)).setText(invoice.getGrandTotal());
+            }
+            if(invoice.getPaidAmount() != null && invoice.getPaidAmount().length() > 0) {
+                ((TextView) findViewById(R.id.txt_paid)).setText(invoice.getPaidAmount());
             }
             if(invoice.getChangeAmount() != null && invoice.getChangeAmount().length() > 0) {
                 ((TextView) findViewById(R.id.txt_change)).setText(invoice.getChangeAmount());
             }
             if(invoice.getNote() != null && invoice.getNote().length() > 0) {
                 ((TextView) findViewById(R.id.txt_note)).setText(invoice.getNote());
+                ((TextView) findViewById(R.id.txt_note)).setVisibility(View.VISIBLE);
             }
             if(invoice.getUdf1() != null && invoice.getUdf1().length() > 0) {
                 ((TextView) findViewById(R.id.txt_udf1)).setText(invoice.getUdf1());

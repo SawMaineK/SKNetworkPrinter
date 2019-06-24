@@ -237,28 +237,29 @@
                             android:layout_height="wrap_content"
                             android:text="20,000" />
                         <TextView
-                            android:id="@+id/txt_tax_amount"
+                            android:id="@+id/txt_discount"
                             android:textColor="#000"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="20,000" />
                         <TextView
-                            android:id="@+id/txt_discount"
+                            android:id="@+id/txt_tax_amount"
                             android:textColor="#000"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="1,000" />
-                        <TextView
-                            android:textColor="#000"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="3,000" />
                         <TextView
                             android:id="@+id/txt_grand_total"
                             android:textColor="#000"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="19,000" />
+                        <TextView
+                            android:id="@+id/txt_paid"
+                            android:textColor="#000"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="3,000" />
                         <TextView
                             android:id="@+id/txt_change"
                             android:textColor="#000"
@@ -274,6 +275,7 @@
                     <TextView
                         android:textColor="#000"
                         android:id="@+id/txt_note"
+                        android:visibility="gone"
                         android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="16dp"

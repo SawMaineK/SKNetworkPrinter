@@ -22,12 +22,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         itemList = new ArrayList<>();
-        itemList.add(new Item(1, "Test Product 1", 3000, 2, 6000));
-        itemList.add(new Item(1, "Test Product 1", 3000, 2, 6000));
-        itemList.add(new Item(1, "Test Product 1", 3000, 2, 6000));
-        itemList.add(new Item(1, "Test Product 1", 3000, 2, 6000));
-        itemList.add(new Item(1, "Test Product 1", 3000, 2, 6000));
-        itemList.add(new Item(1, "Test Product 1", 3000, 2, 6000));
+        itemList.add(new Item("1", "Test Product 1", "3000", "2", "6000"));
+        itemList.add(new Item("1", "Test Product 1", "3000", "2", "6000"));
+        itemList.add(new Item("1", "Test Product 1", "3000", "2", "6000"));
+        itemList.add(new Item("1", "Test Product 1", "3000", "2", "6000"));
 
         Invoice invoice = new Invoice();
         invoice.setItems(itemList);
@@ -46,7 +44,8 @@ public class MainActivity extends AppCompatActivity {
         invoice.setTaxAmount("20,000");
         invoice.setDiscount("1,000");
         invoice.setGrandTotal("3,000");
-        invoice.setChangeAmount("19,000");
+        invoice.setPaidAmount("3,000");
+        invoice.setChangeAmount("100");
         invoice.setNote("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s");
         invoice.setUdf1("Lorem Ipsum is simply dummy text of the printing and typesetting industry");
 

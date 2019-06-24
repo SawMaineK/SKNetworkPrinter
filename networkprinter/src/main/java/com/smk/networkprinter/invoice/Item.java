@@ -1,13 +1,13 @@
 package com.smk.networkprinter.invoice;
 
 public class Item {
-    private int id;
+    private String id;
     private String name;
-    private int price;
-    private int qty;
-    private int amount;
+    private String price;
+    private String qty;
+    private String amount;
 
-    public Item(int id, String name, int price, int qty, int amount) {
+    public Item(String id, String name, String price, String qty, String amount) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -15,11 +15,11 @@ public class Item {
         this.amount = amount;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -31,27 +31,27 @@ public class Item {
         this.name = name;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
-    public int getQty() {
+    public String getQty() {
         return qty;
     }
 
-    public void setQty(int qty) {
+    public void setQty(String qty) {
         this.qty = qty;
     }
 
-    public int getAmount() {
+    public String getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(String amount) {
         this.amount = amount;
     }
 }

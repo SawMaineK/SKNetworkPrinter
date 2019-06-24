@@ -7,7 +7,6 @@ public class Invoice {
     String logo;
     String companyName;
     String branchName;
-    String shopName;
     String address;
     String phone;
     String date;
@@ -21,6 +20,7 @@ public class Invoice {
     String discount;
     String taxAmount;
     String grandTotal;
+    String paidAmount;
     String changeAmount;
     String note;
     String udf1;
@@ -49,14 +49,6 @@ public class Invoice {
 
     public void setBranchName(String branchName) {
         this.branchName = branchName;
-    }
-
-    public String getShopName() {
-        return shopName;
-    }
-
-    public void setShopName(String shopName) {
-        this.shopName = shopName;
     }
 
     public String getAddress() {
@@ -161,6 +153,14 @@ public class Invoice {
 
     public void setGrandTotal(String grandTotal) {
         this.grandTotal = grandTotal;
+    }
+
+    public String getPaidAmount() {
+        return paidAmount;
+    }
+
+    public void setPaidAmount(String paidAmount) {
+        this.paidAmount = paidAmount;
     }
 
     public String getChangeAmount() {
