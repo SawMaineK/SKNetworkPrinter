@@ -9,6 +9,7 @@ import android.os.StrictMode;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -24,9 +25,8 @@ import java.util.ArrayList;
 
 public class InvoiceActivity extends Activity {
 
-    private ListView lstView;
+    private LinearLayout lstView;
     private ArrayList<Object> itemList;
-    private ListItemAdapter mAdapter;
     private String ipAddress = "192.168.1.87";
     private int port = 9100;
     private int paperWidth = 580;
@@ -89,14 +89,15 @@ public class InvoiceActivity extends Activity {
                 ((TextView) findViewById(R.id.txt_customer_phone)).setText(invoice.getCustomerPhone());
             }
             if(invoice.getItems().size() > 0) {
-                lstView = (ListView) findViewById(R.id.lst_item);
-                itemList = new ArrayList<>();
-                itemList.addAll(this.invoice.getItems());
-
-                mAdapter = new ListItemAdapter(this, itemList);
-                lstView.setAdapter(mAdapter);
-                mAdapter.notifyDataSetChanged();
-                setListViewHeightBasedOnItems(lstView);
+                lstView = (LinearLayout) findViewById(R.id.lst_item);
+                for (Item item : invoice.getItems()) {
+                    View itemView = View.inflate(this, R.layout.list_item_invoice, null);
+                    ((TextView)itemView.findViewById(R.id.txt_name)).setText(item.getName());
+                    ((TextView)itemView.findViewById(R.id.txt_price)).setText(item.getPrice());
+                    ((TextView)itemView.findViewById(R.id.txt_qty)).setText(item.getQty());
+                    ((TextView)itemView.findViewById(R.id.txt_amount)).setText(item.getAmount());
+                    lstView.addView(itemView);
+                }
             }
             if(invoice.getSubtotal() != null && invoice.getSubtotal().length() > 0) {
                 ((TextView) findViewById(R.id.txt_subtotal)).setText(invoice.getSubtotal());

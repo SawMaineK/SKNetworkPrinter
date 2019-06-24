@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         itemList = new ArrayList<>();
-        itemList.add(new Item("1", "Test Product 1", "3000", "2", "6000"));
+        itemList.add(new Item("1", "Test Product 1 Test Product 1", "300,000", "2", "600,000"));
         itemList.add(new Item("1", "Test Product 1", "3000", "2", "6000"));
         itemList.add(new Item("1", "Test Product 1", "3000", "2", "6000"));
         itemList.add(new Item("1", "Test Product 1", "3000", "2", "6000"));

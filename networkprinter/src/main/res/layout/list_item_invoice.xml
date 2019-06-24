@@ -15,18 +15,18 @@
         android:layout_weight="1.1" />
 
     <TextView
-        android:textColor="#000"
         android:id="@+id/txt_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1.8" />
+        android:layout_weight="1.5"
+        android:textColor="#000" />
 
     <TextView
-        android:textColor="#000"
         android:id="@+id/txt_qty"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1.9" />
+        android:layout_weight="1.7"
+        android:textColor="#000" />
 
     <TextView
         android:textColor="#000"
