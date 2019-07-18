@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.smk.networkprinter.PrinterManager;
@@ -42,9 +43,9 @@ public class InvoiceActivity extends Activity {
         
         Bundle intent = getIntent().getExtras();
         if(intent != null) {
-            this.ipAddress = intent.getString("ipAddress");
-            this.port = intent.getInt("port");
-            this.paperWidth = intent.getInt("paperWidth");
+            this.ipAddress = intent.getString("ipAddress", this.ipAddress);
+            this.port = intent.getInt("port", this.port);
+            this.paperWidth = intent.getInt("paperWidth", this.paperWidth);
             this.invoice = new Gson().fromJson(intent.getString("invoice"), Invoice.class);
         }
 
@@ -54,6 +55,7 @@ public class InvoiceActivity extends Activity {
         }
         printer = new PrinterManager(ipAddress, port);
         printerService = new PrinterService(printer);
+        printerService.lineBreak(3);
         final ProgressDialog printing = new ProgressDialog(this);
         printing.setMessage("Printing...");
         printing.show();
@@ -133,7 +135,11 @@ public class InvoiceActivity extends Activity {
                 ((TextView) findViewById(R.id.txt_udf3)).setText(invoice.getUdf3());
                 ((TextView) findViewById(R.id.txt_udf3)).setVisibility(View.VISIBLE);
             }
-            
+
+            final LinearLayout layout = (LinearLayout) findViewById(R.id.invoice);
+            ViewGroup.LayoutParams layoutParams = layout.getLayoutParams();
+            layoutParams.width = paperWidth;
+            layout.setLayoutParams(layoutParams);
             if(invoice.getLogo() != null && invoice.getLogo().length() > 0 && invoice.getLogo().contains("http")) {
                 imgLogo = (ImageView) findViewById(R.id.img_logo);
                 Picasso.get()
@@ -151,10 +157,13 @@ public class InvoiceActivity extends Activity {
                                         } catch (InterruptedException e) {
                                             e.printStackTrace();
                                         } finally {
-                                            Bitmap bitmap = loadBitmapFromView(findViewById(R.id.invoice));
+
+                                            Bitmap bitmap = loadBitmapFromView(layout);
                                             printerService.printImage(resizeBitmap(bitmap, paperWidth));
                                             printerService.lineBreak();
                                             printerService.cutFull();
+                                            printerService.init();
+                                            printerService.close();
                                             printing.dismiss();
                                             finish();
                                         }
@@ -164,7 +173,8 @@ public class InvoiceActivity extends Activity {
 
                             @Override
                             public void onError(Exception e) {
-
+                                printing.dismiss();
+                                Toast.makeText(InvoiceActivity.this, "Invalid Logo", Toast.LENGTH_LONG).show();
                             }
                         });
             } else {
@@ -176,10 +186,12 @@ public class InvoiceActivity extends Activity {
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         } finally {
-                            Bitmap bitmap = loadBitmapFromView(findViewById(R.id.invoice));
+                            Bitmap bitmap = loadBitmapFromView(layout);
                             printerService.printImage(resizeBitmap(bitmap, paperWidth));
                             printerService.lineBreak();
                             printerService.cutFull();
+                            printerService.init();
+                            printerService.close();
                             printing.dismiss();
                             finish();
                         }
@@ -190,41 +202,6 @@ public class InvoiceActivity extends Activity {
 
         }
 
-
-    }
-
-    public static boolean setListViewHeightBasedOnItems(ListView listView) {
-
-        ListAdapter listAdapter = listView.getAdapter();
-        if (listAdapter != null) {
-
-            int numberOfItems = listAdapter.getCount();
-
-            // Get total height of all items.
-            int totalItemsHeight = 0;
-            for (int itemPos = 0; itemPos < numberOfItems; itemPos++) {
-                View item = listAdapter.getView(itemPos, null, listView);
-                float px = 500 * (listView.getResources().getDisplayMetrics().density);
-                item.measure(View.MeasureSpec.makeMeasureSpec((int) px, View.MeasureSpec.AT_MOST), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
-                totalItemsHeight += item.getMeasuredHeight();
-            }
-
-            // Get total height of all item dividers.
-            int totalDividersHeight = listView.getDividerHeight() *
-                    (numberOfItems - 1);
-            // Get padding
-            int totalPadding = listView.getPaddingTop() + listView.getPaddingBottom();
-
-            // Set list height.
-            ViewGroup.LayoutParams params = listView.getLayoutParams();
-            params.height = totalItemsHeight + totalDividersHeight + totalPadding;
-            listView.setLayoutParams(params);
-            listView.requestLayout();
-            return true;
-
-        } else {
-            return false;
-        }
 
     }
 

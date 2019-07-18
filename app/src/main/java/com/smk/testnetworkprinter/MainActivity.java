@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         Invoice invoice = new Invoice();
         invoice.setItems(itemList);
-        invoice.setLogo("https://www.onhandpos.com/assets/imgs/logo.png");
+        invoice.setLogo("https://admin.onhandpos.com/assets/imgs/logo.png");
         invoice.setCompanyName("On Hand POS");
         invoice.setBranchName("အမွတ္ ၃၉ (ဘီ)၊ စပါယ္လမ္း");
         invoice.setAddress("Company Address: No.39 B, Sapal Street, Mingal Taungnyunt");
@@ -50,9 +50,9 @@ public class MainActivity extends AppCompatActivity {
         invoice.setUdf1("Lorem Ipsum is simply dummy text of the printing and typesetting industry");
 
         Bundle bundle = new Bundle();
-        bundle.putString("ipAddress","192.168.1.87");
+        bundle.putString("ipAddress","192.168.8.87");
         bundle.putInt("port", 9100);
-        bundle.putInt("paperWidth", 580); //80mm
+        bundle.putInt("paperWidth", 500); //80mm
         bundle.putString("invoice", new Gson().toJson(invoice));
         startActivity(new Intent(getApplicationContext(), InvoiceActivity.class).putExtras(bundle));
     }
