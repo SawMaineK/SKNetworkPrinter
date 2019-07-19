@@ -138,8 +138,8 @@ public class InvoiceActivity extends Activity {
 
             final LinearLayout layout = (LinearLayout) findViewById(R.id.invoice);
             ViewGroup.LayoutParams layoutParams = layout.getLayoutParams();
-            layoutParams.width = paperWidth;
-            layout.setLayoutParams(layoutParams);
+//            layoutParams.width = paperWidth;
+//            layout.setLayoutParams(layoutParams);
             if(invoice.getLogo() != null && invoice.getLogo().length() > 0 && invoice.getLogo().contains("http")) {
                 imgLogo = (ImageView) findViewById(R.id.img_logo);
                 Picasso.get()
